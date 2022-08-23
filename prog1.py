@@ -13,8 +13,6 @@ import json
 contacts = []
 
 # the function to add the inputed data into the json
-
-
 def write_json(new_data, filename='x.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
@@ -25,9 +23,8 @@ def write_json(new_data, filename='x.json'):
         file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent=4)
+        
 # function that adds new contacts to the data base
-
-
 def add_new_contact():
     # objects to be appended are the user_name=input
     user_name = input("Your name: ")
