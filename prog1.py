@@ -1,7 +1,7 @@
 # ---------------
-# Type comments to whats going on  (done)
+# Type comments to about whats going on  (done)
 # ------------------------------
-# I want you to write the name and phone number from the user (done)
+# I want you to write the name and the phone number from the user (done)
 # ------------------------------
 # * Make a delete opinion (Will work on it later)
 # ------------------------------
@@ -37,26 +37,23 @@ def add_new_contact():
     contacts.append(contact)
     print("Contact has been added to json!")
     write_json(contact)
+
+
 # prints contacts
-
-
 def print_all_contacts():
     with open('x.json', 'r') as print_contacts:
         contacts = json.load(print_contacts)
     print(contacts)
+
 # just prints an output
-
-
 def del_contact():
     print("function that kill a contact")
+
 # just prints an output
-
-
 def search_contact():
     print("function that searches for a contact")
+
 # main function acts as a BLACK BOX
-
-
 def main():
     user_selection = ""
     while user_selection != "x":
@@ -83,6 +80,5 @@ def main():
             search_contact()
             break
 
-        # if user_selection == "x": print("make a function that exit from the program")
 if __name__ == "__main__":
     main()
