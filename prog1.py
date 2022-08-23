@@ -3,7 +3,7 @@
 # ------------------------------
 # I want you to write the name and the phone number from the user (done)
 # ------------------------------
-# * Make a delete opinion (Will work on it later)
+# * Make a delete opinion (done)
 # ------------------------------
 # I want you to record the data into a json file (done)
 # ------------------------------
@@ -13,6 +13,8 @@ import json
 contacts = []
 
 # the function to add the inputed data into the json
+
+
 def write_json(new_data, filename='x.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
@@ -23,8 +25,10 @@ def write_json(new_data, filename='x.json'):
         file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent=4)
-        
+
 # function that adds new contacts to the data base
+
+
 def add_new_contact():
     # objects to be appended are the user_name=input
     user_name = input("Your name: ")
@@ -42,15 +46,24 @@ def print_all_contacts():
         contacts = json.load(print_contacts)
     print(contacts)
 
-# just prints an output
+# Delete a contact under the number the client has inputed
 def del_contact():
-    print("function that kill a contact")
+    with open('x.json', 'r') as delete_selected_contact:
+        data = json.load(delete_selected_contact)
+        delstring = int(input("Delete a contact under the number: "))
+    del data['emp_details'][delstring]
+    with open('x.json', 'w') as delete_selected_contact:
+        json.dump(data, delete_selected_contact)
+    print("Removed contact under the number", +delstring)
+
 
 # just prints an output
 def search_contact():
     print("function that searches for a contact")
 
 # main function acts as a BLACK BOX
+
+
 def main():
     user_selection = ""
     while user_selection != "x":
@@ -76,6 +89,7 @@ def main():
         if user_selection == "s":
             search_contact()
             break
+
 
 if __name__ == "__main__":
     main()
