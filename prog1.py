@@ -13,8 +13,6 @@ import json
 contacts = []
 
 # the function to add the inputed data into the json
-
-
 def write_json(new_data, filename='x.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
@@ -27,8 +25,6 @@ def write_json(new_data, filename='x.json'):
         json.dump(file_data, file, indent=4)
 
 # function that adds new contacts to the data base
-
-
 def add_new_contact():
     # objects to be appended are the user_name=input
     user_name = input("Your name: ")
@@ -46,12 +42,12 @@ def print_all_contacts():
         contacts = json.load(print_contacts)
     print(contacts)
 
-# Delete a contact under the number the client has inputed
+# Delete a contact under the number the client has inputed - https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
 def del_contact():
-    with open('x.json', 'r') as delete_selected_contact:
+    with open('x.json', 'r') as delete_selected_contact: 
         data = json.load(delete_selected_contact)
-        delstring = int(input("Delete a contact under the number: "))
-    del data['emp_details'][delstring]
+        delstring = int(input("Delete a contact under the number: ")) #inputs the number the client sent
+    del data['emp_details'][delstring] #put the number the client chose as a string and use said string as a target for removal
     with open('x.json', 'w') as delete_selected_contact:
         json.dump(data, delete_selected_contact)
     print("Removed contact under the number", +delstring)
