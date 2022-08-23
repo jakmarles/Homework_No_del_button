@@ -9,8 +9,12 @@
 # ------------------------------
 # load data from the json file into contacts  (done)
 import json
+
 contacts = []
+
 # the function to add the inputed data into the json
+
+
 def write_json(new_data, filename='x.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
@@ -22,6 +26,8 @@ def write_json(new_data, filename='x.json'):
         # convert back to json.
         json.dump(file_data, file, indent=4)
 # function that adds new contacts to the data base
+
+
 def add_new_contact():
     # objects to be appended are the user_name=input
     user_name = input("Your name: ")
@@ -32,17 +38,25 @@ def add_new_contact():
     print("Contact has been added to json!")
     write_json(contact)
 # prints contacts
+
+
 def print_all_contacts():
     with open('x.json', 'r') as print_contacts:
         contacts = json.load(print_contacts)
     print(contacts)
 # just prints an output
+
+
 def del_contact():
     print("function that kill a contact")
 # just prints an output
+
+
 def search_contact():
     print("function that searches for a contact")
 # main function acts as a BLACK BOX
+
+
 def main():
     user_selection = ""
     while user_selection != "x":
@@ -68,6 +82,7 @@ def main():
         if user_selection == "s":
             search_contact()
             break
+
         # if user_selection == "x": print("make a function that exit from the program")
 if __name__ == "__main__":
     main()
