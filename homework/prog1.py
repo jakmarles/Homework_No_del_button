@@ -9,10 +9,13 @@
 # ------------------------------
 # load data from the json file into contacts  (done)
 import json
+from re import S
 
 contacts = []
 
 # the function to add the inputed data into the json
+
+
 def write_json(new_data, filename='x.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
@@ -25,6 +28,8 @@ def write_json(new_data, filename='x.json'):
         json.dump(file_data, file, indent=4)
 
 # function that adds new contacts to the data base
+
+
 def add_new_contact():
     # objects to be appended are the user_name=input
     user_name = input("Your name: ")
@@ -43,24 +48,33 @@ def print_all_contacts():
     print(contacts)
 
 # Delete a contact under the number the client has inputed - https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
+
+
 def del_contact():
-    with open('x.json', 'r') as delete_selected_contact: 
+    with open('x.json', 'r') as delete_selected_contact:
         data = json.load(delete_selected_contact)
-        delstring = int(input("Delete a contact under the number: ")) #inputs the number the client sent
-    del data['emp_details'][delstring] #put the number the client chose as a string and use said string as a target for removal
+        # inputs the number the client sent
+        delstring = int(input("Delete a contact under the number: "))
+    # put the number the client chose as a string and use said string as a target for removal
+    del data['emp_details'][delstring]
     with open('x.json', 'w') as delete_selected_contact:
         json.dump(data, delete_selected_contact)
     print("Removed contact under the number", +delstring)
 
 
-# just prints an output
-def search_contact():
-    print("function that searches for a contact")
+def search():
+    contact_2_search = input("name? ")
+    for contact in contacts:
+        if contact["name"] == contact_2_search:
+            print(f"found, name: {contact['name']} cell: {contact['cell']}")
+            return
+    print(f"not found {contact_2_search}")
+
 
 # main function acts as a BLACK BOX
 
-
 def main():
+
     user_selection = ""
     while user_selection != "x":
         # menu
@@ -83,7 +97,7 @@ def main():
             del_contact()
             break
         if user_selection == "s":
-            search_contact()
+            search()
             break
 
 
